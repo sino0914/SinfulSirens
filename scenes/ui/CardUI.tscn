@@ -1,0 +1,50 @@
+[gd_scene load_steps=2 format=3 uid="uid://c8hjtp4fvm6qx"]
+
+[ext_resource type="Script" path="res://scripts/ui/CardUI.gd" id="1_vn86w"]
+
+[node name="CardUI" type="Control"]
+custom_minimum_size = Vector2(120, 160)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 120.0
+offset_bottom = 160.0
+script = ExtResource("1_vn86w")
+
+[node name="CardBackground" type="NinePatchRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.9, 0.9, 0.9, 1)
+
+[node name="CardContent" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = -8.0
+
+[node name="CardName" type="Label" parent="CardContent"]
+layout_mode = 2
+text = "卡牌名稱"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="CardIcon" type="TextureRect" parent="CardContent"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="CardDescription" type="Label" parent="CardContent"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "卡牌描述"
+autowrap_mode = 3
+vertical_alignment = 1
+
+[node name="CardCost" type="Label" parent="CardContent"]
+layout_mode = 2
+text = "0"
+horizontal_alignment = 2

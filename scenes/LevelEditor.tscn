@@ -1,0 +1,158 @@
+[gd_scene load_steps=2 format=3 uid="uid://bml5tiapxhwjk"]
+
+[ext_resource type="Script" path="res://scripts/LevelEditor.gd" id="1_level_editor"]
+
+[node name="LevelEditor" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource("1_level_editor")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.2, 0.3, 0.4, 1)
+
+[node name="TopPanel" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = 50.0
+
+[node name="Title" type="Label" parent="TopPanel"]
+layout_mode = 2
+text = "關卡編輯器"
+size_flags_horizontal = 3
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SaveButton" type="Button" parent="TopPanel"]
+layout_mode = 2
+text = "儲存關卡"
+
+[node name="LoadButton" type="Button" parent="TopPanel"]
+layout_mode = 2
+text = "載入關卡"
+
+[node name="NewButton" type="Button" parent="TopPanel"]
+layout_mode = 2
+text = "新建關卡"
+
+[node name="BackButton" type="Button" parent="TopPanel"]
+layout_mode = 2
+text = "返回"
+
+[node name="MainContainer" type="HSplitContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 60.0
+offset_right = -10.0
+offset_bottom = -10.0
+
+[node name="LeftPanel" type="VBoxContainer" parent="MainContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+custom_minimum_size = Vector2(300, 0)
+
+[node name="LevelInfo" type="VBoxContainer" parent="MainContainer/LeftPanel"]
+layout_mode = 2
+
+[node name="LevelInfoTitle" type="Label" parent="MainContainer/LeftPanel/LevelInfo"]
+layout_mode = 2
+text = "關卡資訊"
+
+[node name="LevelNameContainer" type="HBoxContainer" parent="MainContainer/LeftPanel/LevelInfo"]
+layout_mode = 2
+
+[node name="LevelNameLabel" type="Label" parent="MainContainer/LeftPanel/LevelInfo/LevelNameContainer"]
+layout_mode = 2
+text = "名稱："
+
+[node name="LevelNameInput" type="LineEdit" parent="MainContainer/LeftPanel/LevelInfo/LevelNameContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "輸入關卡名稱"
+
+[node name="Separator1" type="HSeparator" parent="MainContainer/LeftPanel"]
+layout_mode = 2
+
+[node name="EnemySection" type="VBoxContainer" parent="MainContainer/LeftPanel"]
+layout_mode = 2
+
+[node name="EnemyTitle" type="Label" parent="MainContainer/LeftPanel/EnemySection"]
+layout_mode = 2
+text = "敵人管理"
+
+[node name="EnemyAddButton" type="Button" parent="MainContainer/LeftPanel/EnemySection"]
+layout_mode = 2
+text = "新增敵人"
+
+[node name="EnemyScrollContainer" type="ScrollContainer" parent="MainContainer/LeftPanel/EnemySection"]
+layout_mode = 2
+size_flags_vertical = 3
+custom_minimum_size = Vector2(0, 150)
+
+[node name="EnemyList" type="VBoxContainer" parent="MainContainer/LeftPanel/EnemySection/EnemyScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Separator2" type="HSeparator" parent="MainContainer/LeftPanel"]
+layout_mode = 2
+
+[node name="PlayerSection" type="VBoxContainer" parent="MainContainer/LeftPanel"]
+layout_mode = 2
+
+[node name="PlayerTitle" type="Label" parent="MainContainer/LeftPanel/PlayerSection"]
+layout_mode = 2
+text = "我方角色管理"
+
+[node name="PlayerAddButton" type="Button" parent="MainContainer/LeftPanel/PlayerSection"]
+layout_mode = 2
+text = "新增角色"
+
+[node name="PlayerScrollContainer" type="ScrollContainer" parent="MainContainer/LeftPanel/PlayerSection"]
+layout_mode = 2
+size_flags_vertical = 3
+custom_minimum_size = Vector2(0, 150)
+
+[node name="PlayerList" type="VBoxContainer" parent="MainContainer/LeftPanel/PlayerSection/PlayerScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="RightPanel" type="Control" parent="MainContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="PreviewTitle" type="Label" parent="MainContainer/RightPanel"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 30.0
+text = "關卡預覽"
+horizontal_alignment = 1
+
+[node name="PreviewArea" type="Panel" parent="MainContainer/RightPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 40.0
+
+[node name="SaveDialog" type="FileDialog" parent="."]
+file_mode = 4
+access = 2
+filters = PackedStringArray("*.json ; JSON 檔案")
+
+[node name="LoadDialog" type="FileDialog" parent="."]
+file_mode = 0
+access = 2
+filters = PackedStringArray("*.json ; JSON 檔案")

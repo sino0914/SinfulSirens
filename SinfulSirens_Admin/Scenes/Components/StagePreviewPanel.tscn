@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://c8w9xw4z9yhpl"]
+
+[ext_resource type="Script" path="res://Scripts/Components/stage_preview_panel.gd" id="1_stage_preview"]
+
+[node name="StagePreviewPanel" type="AspectRatioContainer"]
+ratio = 1.77778
+script = ExtResource("1_stage_preview")
+
+[node name="Content" type="VBoxContainer" parent="."]
+layout_mode = 2

@@ -1,0 +1,80 @@
+[gd_scene load_steps=2 format=3 uid="uid://c4y7xw8z3yhpk"]
+
+[ext_resource type="Script" path="res://Scripts/EditMode/edit_mode.gd" id="1_edit_mode"]
+
+[node name="EditMode" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_edit_mode")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.15, 0.15, 0.2, 1)
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="Title" type="Label" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 56
+text = "編輯模式"
+horizontal_alignment = 1
+
+[node name="Spacer" type="Control" parent="CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+
+[node name="ButtonContainer" type="VBoxContainer" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="EditStageButton" type="Button" parent="CenterContainer/VBoxContainer/ButtonContainer"]
+custom_minimum_size = Vector2(350, 70)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "編輯關卡"
+
+[node name="EditTraitButton" type="Button" parent="CenterContainer/VBoxContainer/ButtonContainer"]
+custom_minimum_size = Vector2(350, 70)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "編輯特徵卡"
+
+[node name="EditGameButton" type="Button" parent="CenterContainer/VBoxContainer/ButtonContainer"]
+custom_minimum_size = Vector2(350, 70)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "編輯遊戲"
+
+[node name="Spacer2" type="Control" parent="CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="BackButton" type="Button" parent="CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(350, 60)
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "返回"
+
+[connection signal="pressed" from="CenterContainer/VBoxContainer/ButtonContainer/EditStageButton" to="." method="_on_edit_stage_button_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/ButtonContainer/EditTraitButton" to="." method="_on_edit_trait_button_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/ButtonContainer/EditGameButton" to="." method="_on_edit_game_button_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/BackButton" to="." method="_on_back_button_pressed"]

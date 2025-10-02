@@ -1,0 +1,9 @@
+res://Scripts/MainMenu/main_menu.gd
+res://Scripts/EditStage/edit_stage.gd
+res://Scripts/Dialogs/enemy_edit_dialog.gd
+res://Scripts/Dialogs/stage_edit_dialog.gd
+res://Scenes/Dialogs/EnemyEditDialog.tscn
+res://Scenes/Dialogs/StageEditDialog.tscn
+res://Scripts/Components/stage_preview_panel.gd
+res://Scripts/Components/draggable_character.gd
+res://Scripts/Data/stage.gd

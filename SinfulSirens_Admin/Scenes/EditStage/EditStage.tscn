@@ -1,0 +1,149 @@
+[gd_scene load_steps=3 format=3 uid="uid://dvh8xw9z4yhpk"]
+
+[ext_resource type="Script" path="res://Scripts/EditStage/edit_stage.gd" id="1_edit_stage"]
+[ext_resource type="PackedScene" uid="uid://c8w9xw4z9yhpl" path="res://Scenes/Components/StagePreviewPanel.tscn" id="2_preview_panel"]
+
+[node name="EditStage" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_edit_stage")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.15, 0.15, 0.2, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 30
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="TopBar" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="MarginContainer/VBoxContainer/TopBar"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 40
+text = "編輯關卡"
+
+[node name="BackButton" type="Button" parent="MarginContainer/VBoxContainer/TopBar"]
+custom_minimum_size = Vector2(140, 50)
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "返回"
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="ContentContainer" type="HSplitContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="LeftPanel" type="VBoxContainer" parent="MarginContainer/VBoxContainer/ContentContainer"]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="EnemyHeader" type="HBoxContainer" parent="MarginContainer/VBoxContainer/ContentContainer/LeftPanel"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/ContentContainer/LeftPanel/EnemyHeader"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 26
+text = "敵人列表"
+
+[node name="AddEnemyButton" type="Button" parent="MarginContainer/VBoxContainer/ContentContainer/LeftPanel/EnemyHeader"]
+custom_minimum_size = Vector2(100, 40)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "新增"
+
+[node name="EnemyListContainer" type="PanelContainer" parent="MarginContainer/VBoxContainer/ContentContainer/LeftPanel"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/VBoxContainer/ContentContainer/LeftPanel/EnemyListContainer"]
+layout_mode = 2
+
+[node name="EnemyList" type="VBoxContainer" parent="MarginContainer/VBoxContainer/ContentContainer/LeftPanel/EnemyListContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 8
+
+[node name="RightPanel" type="VBoxContainer" parent="MarginContainer/VBoxContainer/ContentContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 12
+
+[node name="StageHeader" type="HBoxContainer" parent="MarginContainer/VBoxContainer/ContentContainer/RightPanel"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/ContentContainer/RightPanel/StageHeader"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 26
+text = "關卡列表"
+
+[node name="AddStageButton" type="Button" parent="MarginContainer/VBoxContainer/ContentContainer/RightPanel/StageHeader"]
+custom_minimum_size = Vector2(100, 40)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "新增"
+
+[node name="StageListContainer" type="PanelContainer" parent="MarginContainer/VBoxContainer/ContentContainer/RightPanel"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/VBoxContainer/ContentContainer/RightPanel/StageListContainer"]
+layout_mode = 2
+
+[node name="StageList" type="VBoxContainer" parent="MarginContainer/VBoxContainer/ContentContainer/RightPanel/StageListContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 8
+
+[node name="PreviewHeader" type="Label" parent="MarginContainer/VBoxContainer/ContentContainer/RightPanel"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 26
+text = "關卡預覽"
+
+[node name="PreviewContainer" type="PanelContainer" parent="MarginContainer/VBoxContainer/ContentContainer/RightPanel"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/VBoxContainer/ContentContainer/RightPanel/PreviewContainer"]
+layout_mode = 2
+
+[node name="PreviewContent" parent="MarginContainer/VBoxContainer/ContentContainer/RightPanel/PreviewContainer/ScrollContainer" instance=ExtResource("2_preview_panel")]
+layout_mode = 2
+size_flags_horizontal = 3
+enemy_image_size = 90
+show_remove_buttons = false
+auto_save_on_drag = true
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/TopBar/BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/ContentContainer/LeftPanel/EnemyHeader/AddEnemyButton" to="." method="_on_add_enemy_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/ContentContainer/RightPanel/StageHeader/AddStageButton" to="." method="_on_add_stage_button_pressed"]

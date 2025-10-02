@@ -1,0 +1,146 @@
+[gd_scene load_steps=3 format=3 uid="uid://crw9xw3z8yhpk"]
+
+[ext_resource type="Script" path="res://Scripts/Dialogs/stage_edit_dialog.gd" id="1_stage_dialog"]
+[ext_resource type="PackedScene" uid="uid://c8w9xw4z9yhpl" path="res://Scenes/Components/StagePreviewPanel.tscn" id="2_preview_panel"]
+
+[node name="StageEditDialog" type="Window"]
+title = "編輯關卡"
+initial_position = 2
+size = Vector2i(1000, 700)
+script = ExtResource("1_stage_dialog")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="NameContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/NameContainer"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "關卡名稱:"
+vertical_alignment = 1
+
+[node name="NameInput" type="LineEdit" parent="MarginContainer/VBoxContainer/NameContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 20
+placeholder_text = "輸入關卡名稱"
+
+[node name="DescContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/DescContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "關卡描述:"
+
+[node name="DescInput" type="TextEdit" parent="MarginContainer/VBoxContainer/DescContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+placeholder_text = "輸入關卡描述(可選)"
+
+[node name="EnemyContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 10
+
+[node name="HeaderContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/EnemyContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/EnemyContainer/HeaderContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 20
+text = "敵人配置 (最多8隻):"
+
+[node name="CountLabel" type="Label" parent="MarginContainer/VBoxContainer/EnemyContainer/HeaderContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "0/8"
+
+[node name="ContentContainer" type="HSplitContainer" parent="MarginContainer/VBoxContainer/EnemyContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="LeftPanel" type="VBoxContainer" parent="MarginContainer/VBoxContainer/EnemyContainer/ContentContainer"]
+custom_minimum_size = Vector2(450, 0)
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="AvailableEnemiesLabel" type="Label" parent="MarginContainer/VBoxContainer/EnemyContainer/ContentContainer/LeftPanel"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "可用敵人"
+
+[node name="EnemyListContainer" type="PanelContainer" parent="MarginContainer/VBoxContainer/EnemyContainer/ContentContainer/LeftPanel"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/VBoxContainer/EnemyContainer/ContentContainer/LeftPanel/EnemyListContainer"]
+layout_mode = 2
+
+[node name="EnemyGrid" type="GridContainer" parent="MarginContainer/VBoxContainer/EnemyContainer/ContentContainer/LeftPanel/EnemyListContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 10
+columns = 2
+
+[node name="RightPanel" type="VBoxContainer" parent="MarginContainer/VBoxContainer/EnemyContainer/ContentContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 10
+
+[node name="PreviewLabel" type="Label" parent="MarginContainer/VBoxContainer/EnemyContainer/ContentContainer/RightPanel"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "關卡預覽"
+
+[node name="PreviewContainer" type="PanelContainer" parent="MarginContainer/VBoxContainer/EnemyContainer/ContentContainer/RightPanel"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/VBoxContainer/EnemyContainer/ContentContainer/RightPanel/PreviewContainer"]
+layout_mode = 2
+
+[node name="PreviewContent" parent="MarginContainer/VBoxContainer/EnemyContainer/ContentContainer/RightPanel/PreviewContainer/ScrollContainer" instance=ExtResource("2_preview_panel")]
+layout_mode = 2
+size_flags_horizontal = 3
+enemy_image_size = 80
+show_remove_buttons = true
+
+[node name="ButtonContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+theme_override_constants/separation = 20
+
+[node name="CancelButton" type="Button" parent="MarginContainer/VBoxContainer/ButtonContainer"]
+custom_minimum_size = Vector2(150, 50)
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "取消"
+
+[node name="SaveButton" type="Button" parent="MarginContainer/VBoxContainer/ButtonContainer"]
+custom_minimum_size = Vector2(150, 50)
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "儲存"
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/ButtonContainer/CancelButton" to="." method="_on_cancel_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/ButtonContainer/SaveButton" to="." method="_on_save_button_pressed"]

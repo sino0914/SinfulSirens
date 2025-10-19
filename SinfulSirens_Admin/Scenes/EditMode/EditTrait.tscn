@@ -27,36 +27,152 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 50
-theme_override_constants/margin_top = 50
-theme_override_constants/margin_right = 50
-theme_override_constants/margin_bottom = 50
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 30
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
+theme_override_constants/separation = 20
 
-[node name="Title" type="Label" parent="MarginContainer/VBoxContainer"]
+[node name="TitleBar" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 48
+
+[node name="Title" type="Label" parent="MarginContainer/VBoxContainer/TitleBar"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 36
 text = "編輯特徵卡"
-horizontal_alignment = 1
-
-[node name="ContentLabel" type="Label" parent="MarginContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 24
-text = "特徵卡編輯功能開發中..."
-horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Spacer" type="Control" parent="MarginContainer/VBoxContainer"]
+[node name="BackButton" type="Button" parent="MarginContainer/VBoxContainer/TitleBar"]
+custom_minimum_size = Vector2(120, 50)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "返回"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 20
+
+[node name="LeftPanel" type="PanelContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/LeftPanel"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/LeftPanel/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "特徵卡列表"
+horizontal_alignment = 1
+
+[node name="TraitList" type="ItemList" parent="MarginContainer/VBoxContainer/HBoxContainer/LeftPanel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 16
+
+[node name="RightPanel" type="PanelContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/RightPanel"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/RightPanel/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "特徵卡編輯"
+horizontal_alignment = 1
+
+[node name="FormContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/RightPanel/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="ImagePreviewLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/RightPanel/VBoxContainer/FormContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "特徵圖片："
+
+[node name="ImagePreviewContainer" type="PanelContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/RightPanel/VBoxContainer/FormContainer"]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+
+[node name="ImagePreview" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer/RightPanel/VBoxContainer/FormContainer/ImagePreviewContainer"]
+layout_mode = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="ImagePathContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/RightPanel/VBoxContainer/FormContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="ImagePathInput" type="LineEdit" parent="MarginContainer/VBoxContainer/HBoxContainer/RightPanel/VBoxContainer/FormContainer/ImagePathContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "圖片路徑..."
+editable = false
+
+[node name="BrowseButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/RightPanel/VBoxContainer/FormContainer/ImagePathContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "瀏覽..."
+
+[node name="PositionLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/RightPanel/VBoxContainer/FormContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "部位："
+
+[node name="PositionOption" type="OptionButton" parent="MarginContainer/VBoxContainer/HBoxContainer/RightPanel/VBoxContainer/FormContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+
+[node name="FoodAmountLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/RightPanel/VBoxContainer/FormContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "食物數量："
+
+[node name="FoodAmountInput" type="SpinBox" parent="MarginContainer/VBoxContainer/HBoxContainer/RightPanel/VBoxContainer/FormContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+
+[node name="Spacer" type="Control" parent="MarginContainer/VBoxContainer/HBoxContainer/RightPanel/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="BackButton" type="Button" parent="MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(200, 60)
+[node name="ButtonContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/RightPanel/VBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 4
-theme_override_font_sizes/font_size = 28
-text = "返回"
+theme_override_constants/separation = 15
+alignment = 1
 
-[connection signal="pressed" from="MarginContainer/VBoxContainer/BackButton" to="." method="_on_back_button_pressed"]
+[node name="AddButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/RightPanel/VBoxContainer/ButtonContainer"]
+custom_minimum_size = Vector2(120, 50)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "新增"
+
+[node name="UpdateButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/RightPanel/VBoxContainer/ButtonContainer"]
+custom_minimum_size = Vector2(120, 50)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "修改"
+
+[node name="DeleteButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/RightPanel/VBoxContainer/ButtonContainer"]
+custom_minimum_size = Vector2(120, 50)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "刪除"
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/TitleBar/BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="item_selected" from="MarginContainer/VBoxContainer/HBoxContainer/LeftPanel/VBoxContainer/TraitList" to="." method="_on_trait_list_item_selected"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/RightPanel/VBoxContainer/FormContainer/ImagePathContainer/BrowseButton" to="." method="_on_browse_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/RightPanel/VBoxContainer/ButtonContainer/AddButton" to="." method="_on_add_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/RightPanel/VBoxContainer/ButtonContainer/UpdateButton" to="." method="_on_update_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/RightPanel/VBoxContainer/ButtonContainer/DeleteButton" to="." method="_on_delete_button_pressed"]

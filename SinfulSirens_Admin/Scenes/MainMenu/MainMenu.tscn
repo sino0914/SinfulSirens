@@ -58,6 +58,12 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "編輯模式"
 
+[node name="GenerateDataButton" type="Button" parent="CenterContainer/VBoxContainer/ButtonContainer"]
+custom_minimum_size = Vector2(300, 60)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "生成範例資料"
+
 [node name="QuitButton" type="Button" parent="CenterContainer/VBoxContainer/ButtonContainer"]
 custom_minimum_size = Vector2(300, 60)
 layout_mode = 2
@@ -66,4 +72,5 @@ text = "離開"
 
 [connection signal="pressed" from="CenterContainer/VBoxContainer/ButtonContainer/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/ButtonContainer/EditButton" to="." method="_on_edit_button_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/ButtonContainer/GenerateDataButton" to="." method="_on_generate_data_button_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/ButtonContainer/QuitButton" to="." method="_on_quit_button_pressed"]

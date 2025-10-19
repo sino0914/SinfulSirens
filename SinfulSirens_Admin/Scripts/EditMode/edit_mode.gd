@@ -13,12 +13,12 @@ func _on_edit_stage_button_pressed():
 
 func _on_edit_trait_button_pressed():
 	print("進入編輯特徵卡")
-	get_tree().change_scene_to_file("res://Scenes/EditTrait/EditTrait.tscn")
+	get_tree().change_scene_to_file("res://Scenes/EditMode/EditTrait.tscn")
 
 
 func _on_edit_game_button_pressed():
 	print("進入編輯遊戲")
-	get_tree().change_scene_to_file("res://Scenes/EditGame/EditGame.tscn")
+	get_tree().change_scene_to_file("res://Scenes/EditMode/EditGame.tscn")
 
 
 func _on_back_button_pressed():

@@ -16,6 +16,11 @@ func _on_edit_button_pressed():
 	get_tree().change_scene_to_file("res://Scenes/EditMode/EditMode.tscn")
 
 
+func _on_generate_data_button_pressed():
+	print("生成範例資料")
+	get_tree().change_scene_to_file("res://Scenes/Utils/GenerateSampleData.tscn")
+
+
 func _on_quit_button_pressed():
 	print("離開遊戲")
 	get_tree().quit()

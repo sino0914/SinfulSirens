@@ -27,36 +27,186 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 50
-theme_override_constants/margin_top = 50
-theme_override_constants/margin_right = 50
-theme_override_constants/margin_bottom = 50
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 30
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
+theme_override_constants/separation = 15
 
-[node name="Title" type="Label" parent="MarginContainer/VBoxContainer"]
+[node name="TopBar" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 48
+
+[node name="Title" type="Label" parent="MarginContainer/VBoxContainer/TopBar"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 40
 text = "編輯遊戲"
-horizontal_alignment = 1
 
-[node name="ContentLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+[node name="BackButton" type="Button" parent="MarginContainer/VBoxContainer/TopBar"]
+custom_minimum_size = Vector2(120, 50)
 layout_mode = 2
-theme_override_font_sizes/font_size = 24
-text = "遊戲編輯功能開發中..."
-horizontal_alignment = 1
-vertical_alignment = 1
+theme_override_font_sizes/font_size = 20
+text = "返回"
 
-[node name="Spacer" type="Control" parent="MarginContainer/VBoxContainer"]
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="ContentContainer" type="HSplitContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="BackButton" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="LeftPanel" type="VBoxContainer" parent="MarginContainer/VBoxContainer/ContentContainer"]
+custom_minimum_size = Vector2(350, 0)
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="StageSection" type="VBoxContainer" parent="MarginContainer/VBoxContainer/ContentContainer/LeftPanel"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="StageLabel" type="Label" parent="MarginContainer/VBoxContainer/ContentContainer/LeftPanel/StageSection"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "選擇關卡"
+
+[node name="StageOption" type="OptionButton" parent="MarginContainer/VBoxContainer/ContentContainer/LeftPanel/StageSection"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+
+[node name="StageInfo" type="Label" parent="MarginContainer/VBoxContainer/ContentContainer/LeftPanel/StageSection"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "未選擇關卡"
+autowrap_mode = 3
+
+[node name="Spacer1" type="Control" parent="MarginContainer/VBoxContainer/ContentContainer/LeftPanel"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="CharacterSection" type="VBoxContainer" parent="MarginContainer/VBoxContainer/ContentContainer/LeftPanel"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 8
+
+[node name="CharacterHeader" type="HBoxContainer" parent="MarginContainer/VBoxContainer/ContentContainer/LeftPanel/CharacterSection"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/ContentContainer/LeftPanel/CharacterSection/CharacterHeader"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+text = "我方角色 (1-4位)"
+
+[node name="AddCharButton" type="Button" parent="MarginContainer/VBoxContainer/ContentContainer/LeftPanel/CharacterSection/CharacterHeader"]
+custom_minimum_size = Vector2(80, 40)
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "新增"
+
+[node name="CharacterListContainer" type="PanelContainer" parent="MarginContainer/VBoxContainer/ContentContainer/LeftPanel/CharacterSection"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/VBoxContainer/ContentContainer/LeftPanel/CharacterSection/CharacterListContainer"]
+layout_mode = 2
+
+[node name="CharacterList" type="VBoxContainer" parent="MarginContainer/VBoxContainer/ContentContainer/LeftPanel/CharacterSection/CharacterListContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 8
+
+[node name="RightPanel" type="VBoxContainer" parent="MarginContainer/VBoxContainer/ContentContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 15
+
+[node name="SelectedTraitsSection" type="VBoxContainer" parent="MarginContainer/VBoxContainer/ContentContainer/RightPanel"]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="SelectedTraitsHeader" type="HBoxContainer" parent="MarginContainer/VBoxContainer/ContentContainer/RightPanel/SelectedTraitsSection"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/ContentContainer/RightPanel/SelectedTraitsSection/SelectedTraitsHeader"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 22
+text = "已選擇的特徵卡"
+
+[node name="CountLabel" type="Label" parent="MarginContainer/VBoxContainer/ContentContainer/RightPanel/SelectedTraitsSection/SelectedTraitsHeader"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "0/40"
+
+[node name="ClearSelectedButton" type="Button" parent="MarginContainer/VBoxContainer/ContentContainer/RightPanel/SelectedTraitsSection/SelectedTraitsHeader"]
+custom_minimum_size = Vector2(80, 35)
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "清空"
+
+[node name="SelectedTraitsContainer" type="PanelContainer" parent="MarginContainer/VBoxContainer/ContentContainer/RightPanel/SelectedTraitsSection"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="SelectedTraitsPanel" type="Panel" parent="MarginContainer/VBoxContainer/ContentContainer/RightPanel/SelectedTraitsSection/SelectedTraitsContainer"]
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/VBoxContainer/ContentContainer/RightPanel/SelectedTraitsSection/SelectedTraitsContainer"]
+layout_mode = 2
+
+[node name="SelectedTraitsList" type="HBoxContainer" parent="MarginContainer/VBoxContainer/ContentContainer/RightPanel/SelectedTraitsSection/SelectedTraitsContainer/ScrollContainer"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="TraitSection" type="VBoxContainer" parent="MarginContainer/VBoxContainer/ContentContainer/RightPanel"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 8
+
+[node name="TraitHeader" type="HBoxContainer" parent="MarginContainer/VBoxContainer/ContentContainer/RightPanel/TraitSection"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/ContentContainer/RightPanel/TraitSection/TraitHeader"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+text = "所有特徵卡"
+
+[node name="TraitListContainer" type="PanelContainer" parent="MarginContainer/VBoxContainer/ContentContainer/RightPanel/TraitSection"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/VBoxContainer/ContentContainer/RightPanel/TraitSection/TraitListContainer"]
+layout_mode = 2
+
+[node name="TraitGrid" type="GridContainer" parent="MarginContainer/VBoxContainer/ContentContainer/RightPanel/TraitSection/TraitListContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 10
+columns = 4
+
+[node name="BottomBar" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="Spacer" type="Control" parent="MarginContainer/VBoxContainer/BottomBar"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="StartGameButton" type="Button" parent="MarginContainer/VBoxContainer/BottomBar"]
 custom_minimum_size = Vector2(200, 60)
 layout_mode = 2
-size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 28
-text = "返回"
+text = "開始遊戲"
 
-[connection signal="pressed" from="MarginContainer/VBoxContainer/BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/TopBar/BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="item_selected" from="MarginContainer/VBoxContainer/ContentContainer/LeftPanel/StageSection/StageOption" to="." method="_on_stage_selected"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/ContentContainer/LeftPanel/CharacterSection/CharacterHeader/AddCharButton" to="." method="_on_add_char_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/ContentContainer/RightPanel/SelectedTraitsSection/SelectedTraitsHeader/ClearSelectedButton" to="." method="_on_clear_traits_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/BottomBar/StartGameButton" to="." method="_on_start_game_button_pressed"]
